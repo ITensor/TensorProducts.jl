@@ -1,0 +1,12 @@
+using Test: @test, @testset
+
+using TensorProducts: ⊗, OneToOne, tensor_product
+
+@testset "tensor_product" begin
+  @test tensor_product() isa OneToOne{Bool}
+  @test ⊗() isa OneToOne{Bool}
+
+  g0 = OneToOne()
+  @test tensor_product(g0, g0) == g0
+  @test tensor_product(1:3, 1:2) == 1:6
+end
