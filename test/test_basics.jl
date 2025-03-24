@@ -9,3 +9,9 @@ using TensorProducts: OneToOne
   @test eltype(a0) == Bool
   @test length(a0) == 1
 end
+
+using BlockArrays: BlockRange, blockaxes
+
+@testset "BlockArray interface OneToOne" begin
+  @test blockaxes(OneToOne()) == (BlockRange(OneToOne()),)
+end
