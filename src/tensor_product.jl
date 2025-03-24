@@ -3,14 +3,19 @@
 
 ⊗() = tensor_product()
 ⊗(a) = tensor_product(a)
-⊗(a1, a2) = tensor_product(a1, a2)  # default
-⊗(a1, a2, as...) = ⊗(⊗(a1, a2), as...)   # allow to specialize ⊗(a1, a2) to fusion_product
+
+# default. No type restriction to allow sectors as input
+⊗(a1, a2) = tensor_product(a1, a2)
+
+# allow to specialize ⊗(a1, a2) to fusion_product
+⊗(a1, a2, as...) = ⊗(⊗(a1, a2), as...)
 
 tensor_product() = OneToOne()
-tensor_product(a) = a
+tensor_product(a::AbstractUnitRange) = a
 tensor_product(a1, a2, as...) = tensor_product(tensor_product(a1, a2), as...)
 
-function tensor_product(a1::AbstractUnitRange, a2::AbstractUnitRange)  # default
+# default
+function tensor_product(a1::AbstractUnitRange, a2::AbstractUnitRange)
   !(isone(first(a1)) && isone(first(a2))) &&
     throw(ArgumentError("Ranges must be one-based"))
   return Base.OneTo(prod(length.((a1, a2))))
