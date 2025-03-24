@@ -1,0 +1,7 @@
+name = "TensorProducts"
+uuid = "decf83d6-1968-43f4-96dc-fdb3fe15fc6d"
+authors = ["ITensor developers <support@itensor.org> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.10"
