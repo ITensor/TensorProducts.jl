@@ -11,6 +11,8 @@ tensor_product(a) = a
 tensor_product(a1, a2, as...) = tensor_product(tensor_product(a1, a2), as...)
 
 function tensor_product(a1::AbstractUnitRange, a2::AbstractUnitRange)  # default
+  !(isone(first(a1)) && isone(first(a2))) &&
+    throw(ArgumentError("Ranges must be one-based"))
   return Base.OneTo(prod(length.((a1, a2))))
 end
 
