@@ -2,10 +2,10 @@
 # https://en.wikipedia.org/wiki/Tensor_product
 
 # ==================================  misc  ================================================
-is_offset_axis(a::AbstractUnitRange) = isone(first(a))
+is_offset_axis(a::AbstractUnitRange) = !isone(first(a))
 
 function require_one_based_axis(a::AbstractUnitRange)
-  return !is_offset_axis(a) && throw(ArgumentError("Range must be one-based"))
+  return is_offset_axis(a) && throw(ArgumentError("Range must be one-based"))
 end
 
 # ==============================  tensor product  ==========================================
