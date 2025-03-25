@@ -11,7 +11,7 @@
 ⊗(a1, a2, as...) = ⊗(⊗(a1, a2), as...)
 
 tensor_product() = OneToOne()
-tensor_product(a::AbstractUnitRange) = a
+tensor_product(a) = a
 tensor_product(a1, a2, as...) = tensor_product(tensor_product(a1, a2), as...)
 
 # default
