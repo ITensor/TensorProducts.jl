@@ -1,5 +1,8 @@
 module TensorProducts
 
-# Write your package code here.
+export ⊗, OneToOne, tensor_product
+
+include("onetoone.jl")
+include("tensor_product.jl")
 
 end
