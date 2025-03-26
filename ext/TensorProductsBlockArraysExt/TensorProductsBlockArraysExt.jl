@@ -11,9 +11,6 @@ using BlockArrays:
 
 using TensorProducts: OneToOne, TensorProducts
 
-# BlockArrays default crashes for OneToOne{Bool}
-BlockArrays.blockaxes(a::OneToOne) = (Block.(a),)
-
 function TensorProducts.tensor_product(
   a1::AbstractBlockedUnitRange, a2::AbstractBlockedUnitRange
 )
