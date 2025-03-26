@@ -15,6 +15,8 @@ b1 = blockedrange([1, 2])
 
   @test ⊗(r0, r0) isa OneToOne
   @test blockisequal(⊗(b1, b1), blockedrange([1, 2, 2, 4]))
+  @test blockisequal(⊗(b1, r0), b1)
+  @test blockisequal(⊗(r0, b1), b1)
 end
 
 @testset "tensor_product" begin

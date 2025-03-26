@@ -28,4 +28,7 @@ function tensor_product(a1::AbstractUnitRange, a2::AbstractUnitRange)
   return Base.OneTo(length(a1) * length(a2))
 end
 
+# OneToOne acts as neutral element for tensor_product
 tensor_product(::OneToOne, ::OneToOne) = OneToOne()
+tensor_product(::OneToOne, a::AbstractUnitRange) = tensor_product(a)
+tensor_product(a::AbstractUnitRange, ::OneToOne) = tensor_product(a)
