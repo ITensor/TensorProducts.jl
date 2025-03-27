@@ -9,15 +9,6 @@ function require_one_based_axis(a::AbstractUnitRange)
 end
 
 # ==============================  tensor product  ==========================================
-⊗() = tensor_product()
-⊗(a) = tensor_product(a)
-
-# default. No type restriction to allow sectors as input
-⊗(a1, a2) = tensor_product(a1, a2)
-
-# allow to specialize ⊗(a1, a2) to fusion_product
-⊗(a1, a2, as...) = ⊗(⊗(a1, a2), as...)
-
 tensor_product() = OneToOne()
 tensor_product(a) = a
 tensor_product(a1, a2, as...) = tensor_product(tensor_product(a1, a2), as...)
@@ -32,3 +23,5 @@ end
 tensor_product(::OneToOne, ::OneToOne) = OneToOne()
 tensor_product(::OneToOne, a::AbstractUnitRange) = tensor_product(a)
 tensor_product(a::AbstractUnitRange, ::OneToOne) = tensor_product(a)
+
+const ⊗ = tensor_product
