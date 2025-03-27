@@ -1,9 +1,7 @@
 using TensorProducts: TensorProducts
 using Documenter: Documenter, DocMeta, deploydocs, makedocs
 
-DocMeta.setdocmeta!(
-  TensorProducts, :DocTestSetup, :(using TensorProducts); recursive=true
-)
+DocMeta.setdocmeta!(TensorProducts, :DocTestSetup, :(using TensorProducts); recursive=true)
 
 include("make_index.jl")
 
