@@ -1,7 +1,9 @@
 using TensorProducts: TensorProducts
 using Documenter: Documenter, DocMeta, deploydocs, makedocs
 
-DocMeta.setdocmeta!(TensorProducts, :DocTestSetup, :(using TensorProducts); recursive=true)
+DocMeta.setdocmeta!(
+  TensorProducts, :DocTestSetup, :(using TensorProducts); recursive=true
+)
 
 include("make_index.jl")
 
@@ -10,9 +12,9 @@ makedocs(;
   authors="ITensor developers <support@itensor.org> and contributors",
   sitename="TensorProducts.jl",
   format=Documenter.HTML(;
-    canonical="https://ITensor.github.io/TensorProducts.jl",
+    canonical="https://itensor.github.io/TensorProducts.jl",
     edit_link="main",
-    assets=["assets/favicon.ico"],
+    assets=["assets/favicon.ico", "assets/extras.css"],
   ),
   pages=["Home" => "index.md", "Reference" => "reference.md"],
 )
