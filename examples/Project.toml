@@ -1,2 +1,5 @@
 [deps]
 TensorProducts = "decf83d6-1968-43f4-96dc-fdb3fe15fc6d"
+
+[compat]
+TensorProducts = "0.1"
