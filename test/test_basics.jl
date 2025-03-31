@@ -12,4 +12,8 @@ using TensorProducts: OneToOne
   @test length(a0) == 1
 
   @test blockaxes(OneToOne()) == (BlockRange(OneToOne()),)
+
+  @test reshape(ones(()), (OneToOne(),)) == ones((1,))
+  @test reshape(ones(()), (OneToOne(), Base.OneTo(1), 1)) == ones((1, 1, 1))
+  @test reshape(ones(()), OneToOne(), Base.OneTo(1), 1) == ones((1, 1, 1))
 end
