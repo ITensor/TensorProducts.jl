@@ -6,12 +6,5 @@ OneToOne() = OneToOne{Int}()
 Base.first(a::OneToOne) = one(eltype(a))
 Base.last(a::OneToOne) = one(eltype(a))
 
+# impose Int64 to keep Base.to_shape(::Base.OneTo) convention
 Base.to_shape(::OneToOne) = 1
-
-# extend Base.OneTo behavior to OneToOne
-function Base.reshape(
-  parent::AbstractArray,
-  shp::Tuple{Union{Integer,Base.OneTo,OneToOne},Vararg{Union{Integer,Base.OneTo,OneToOne}}},
-)
-  return reshape(parent, Base.to_shape(shp))
-end
