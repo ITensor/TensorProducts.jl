@@ -12,4 +12,6 @@ using TensorProducts: OneToOne
   @test length(a0) == 1
 
   @test blockaxes(OneToOne()) == (BlockRange(OneToOne()),)
+  @test Base.to_shape(OneToOne()) isa Int64
+  @test Base.to_shape(OneToOne()) == 1
 end
