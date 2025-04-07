@@ -5,7 +5,9 @@ using TensorProducts: ⊗, OneToOne, tensor_product
 using BlockArrays: blockedrange, blockisequal
 
 r0 = OneToOne()
-b1 = blockedrange([1, 2])
+b0 = blockedrange(Int[])
+b1 = blockedrange([1])
+b2 = blockedrange([1, 2])
 
 @testset "tensor_product" begin
   @test tensor_product() isa OneToOne
@@ -21,8 +23,13 @@ b1 = blockedrange([1, 2])
   @test blockisequal(tensor_product(b1, r0), b1)
   @test blockisequal(tensor_product(r0, b1), b1)
 
-  @test blockisequal(tensor_product(b1, b1), blockedrange([1, 2, 2, 4]))
-  @test blockisequal(tensor_product(b1, b1), blockedrange([1, 2, 2, 4]))
+  @test blockisequal(tensor_product(b0, b0), b0)
+  @test blockisequal(tensor_product(b0, b1), b0)
+  @test blockisequal(tensor_product(b1, b0), b0)
+  @test blockisequal(tensor_product(b1, b1), b1)
+  @test blockisequal(tensor_product(b1, b2), b2)
+  @test blockisequal(tensor_product(b2, b1), b2)
+  @test blockisequal(tensor_product(b2, b2), blockedrange([1, 2, 2, 4]))
 
   @test ⊗(r0, r0) isa OneToOne
 end
