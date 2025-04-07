@@ -14,11 +14,9 @@ using TensorProducts: OneToOne, TensorProducts
 function TensorProducts.tensor_product(
   a1::AbstractBlockedUnitRange, a2::AbstractBlockedUnitRange
 )
-  v = Vector{Base.promote_op(*, eltype(a1), eltype(a2))}()
-  new_blocklengths =
-    mapreduce(vcat, Iterators.product(blocks(a1), blocks(a2)); init=v) do (x, y)
-      return length(x) * length(y)
-    end
+  new_blocklengths = vec(
+    map(splat(*), Iterators.product(blocklengths(a1), blocklengths(a2)))
+  )
   return blockedrange(new_blocklengths)
 end
 
