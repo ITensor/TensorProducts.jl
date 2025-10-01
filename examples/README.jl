@@ -1,5 +1,5 @@
 # # TensorProducts.jl
-# 
+#
 # [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://itensor.github.io/TensorProducts.jl/stable/)
 # [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://itensor.github.io/TensorProducts.jl/dev/)
 # [![Build Status](https://github.com/ITensor/TensorProducts.jl/actions/workflows/Tests.yml/badge.svg?branch=main)](https://github.com/ITensor/TensorProducts.jl/actions/workflows/Tests.yml?query=branch%3Amain)
